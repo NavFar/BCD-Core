@@ -32,12 +32,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity FullAdder is
---  Port ( );
+    Port ( A : in STD_LOGIC;
+           B : in STD_LOGIC;
+           Cin : in STD_LOGIC;
+           R : out STD_LOGIC;
+           Cout : out STD_LOGIC);
 end FullAdder;
 
 architecture Behavioral of FullAdder is
 
 begin
 
+Cout<=(A and B) or (B and Cin) or (Cin and A);
+R<=A xor B xor cin;
 
 end Behavioral;
