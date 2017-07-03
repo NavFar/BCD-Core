@@ -52,7 +52,7 @@ signal R : STD_LOGIC_VECTOR(4*N+3 downto 0);
 
 
 begin
-BCDMultiplierSemiGeneric_ins: BCDMultiplierSemiGeneric generic map(9) port map(A,B,R);
+BCDMultiplierSemiGeneric_ins: BCDMultiplierSemiGeneric generic map(N) port map(A,B,R);
 
 --123456789*0
 --753412841*9
