@@ -43,7 +43,7 @@ component HalfAdder is
     Port ( A : in STD_LOGIC;
            B : in STD_LOGIC;
            R : out STD_LOGIC;
-           C : out STD_LOGIC);
+           Cout : out STD_LOGIC);
 end component;
 --Full Adder
 component FullAdder is
