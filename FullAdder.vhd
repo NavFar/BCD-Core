@@ -39,11 +39,11 @@ entity FullAdder is
            Cout : out STD_LOGIC);
 end FullAdder;
 
-architecture Behavioral of FullAdder is
+architecture Structural of FullAdder is
 
 begin
 
 Cout<=(A and B) or (B and Cin) or (Cin and A);
 R<=A xor B xor cin;
 
-end Behavioral;
+end Structural;
