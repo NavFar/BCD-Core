@@ -22,7 +22,7 @@ component BCDDivderGeneric is
             Enable   : in STD_LOGIC;
             Dividend : in STD_LOGIC_VECTOR(4*n-1 downto 0);
             Divisor  : in STD_LOGIC_VECTOR(4*m-1 downto 0);
-            flag     : out STD_LOGIC:='0';
+            flag     : buffer STD_LOGIC:='0';
             Remainder  : out STD_LOGIC_VECTOR(4*m-1 downto 0);
             Quotient : out STD_LOGIC_VECTOR(4*n-1 downto 0));
 end component;
