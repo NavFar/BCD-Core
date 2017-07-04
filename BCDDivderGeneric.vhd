@@ -38,7 +38,7 @@ entity BCDDivderGeneric is
             Enable   : in STD_LOGIC;
             Dividend : in STD_LOGIC_VECTOR(4*n-1 downto 0);
             Divisor  : in STD_LOGIC_VECTOR(4*m-1 downto 0);
-            flag     : out STD_LOGIC:='0';
+            flag     : buffer STD_LOGIC:='0';
             Remainder: out STD_LOGIC_VECTOR(4*m-1 downto 0);
             Quotient : out STD_LOGIC_VECTOR(4*n-1 downto 0));
 end BCDDivderGeneric;
@@ -85,6 +85,11 @@ signal CP_output       :  STD_LOGIC_VECTOR(4*n-1 downto 0):=(others=>'0');
 signal one             :  STD_LOGIC_VECTOR(4*N-1 downto 0):=(0=>'1',others=>'0');
 signal adderOutput     :  STD_LOGIC_VECTOR(4*N-1 downto 0):=(0=>'1',others=>'0');
 signal index           :  integer:=0;
+
+signal RSTFlag: STD_LOGIC:='0';
+signal RSTFlagBuffer: STD_LOGIC:='1';
+signal NewFlag: STD_LOGIC:='0';
+signal NewFlagBuffer: STD_LOGIC:='0';
        
 begin
 Divisor_buffer_CA<=zero&Divisor;
@@ -95,13 +100,19 @@ QuotientAdde:      BCDAdderGeneric      generic map(n) port map(Quotient_buffer,
 process(CLK)
 begin
     if(rising_edge(CLK)and Enable='1') then
+    
+    if(RSTFlag/=RSTFlagBuffer) then
+         index<=0;  
+         Divisor_buffer_PA<=Divisor&zero;
+         Dividend_buffer<=Dividend;
+         Quotient_buffer<=(others=>'0');
+         curState<=state1;
+         RSTFlagBuffer<=RSTFlag;
+         newFlagBuffer<=not newFlag;
+     else
         case curState is
             when state0=>
-                    index<=0;
-                    Divisor_buffer_PA<=Divisor&zero;
-                    Dividend_buffer<=Dividend;
-                    Quotient_buffer<=(others=>'0');
-                    curState<=state1;
+                   
             when state1=>
                     if(CP_Flag='1') then
                         curState<=state2;
@@ -124,14 +135,23 @@ begin
                   Quotient_buffer(4*n-1 downto 4) <= Quotient_buffer(4*n-5 downto 0);
                   Quotient_buffer(3 downto 0) <= "0000";
             when state4=>
+                  if(newFlag/=newFlagBuffer) then
                   remainder<=Dividend_buffer(4*m-1 downto 0);
                   Quotient<=Quotient_buffer;
-                  flag<='1';
+                  flag<=not Flag;
+                  newFlagBuffer<=newFlag;
+                  end if;
             when others =>
             curState<=state0;
         end case;
+        end if;
     end if;
 end process;
 
-
+process(Divisor,Dividend) 
+begin
+    if(RSTFlag=RSTFlagBuffer) then
+    RSTFlag<= not RSTFlag;
+    end if;
+end process;
 end Behavioral;
