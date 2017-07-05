@@ -54,7 +54,7 @@ signal bout:STD_LOGIC;
 
 begin
 
-bcdAdder: BCDSubtractorGeneric generic map(N) port map(A,B,'1',R,bout);
+bcdsubtractor: BCDSubtractorGeneric generic map(N) port map(A,B,'1',R,bout);
 
 --123456789-456789123
 --753412841-994127825
