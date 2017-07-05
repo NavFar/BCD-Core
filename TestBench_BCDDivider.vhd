@@ -40,10 +40,11 @@ begin
 
 divider_ins: BCDDivderGeneric generic map(N,M) port map(CLK,enable,Dividend,Divisor,Flag,Remainder,Quotient);
 --957412386/5736                                                 
---958764321/8564                    
 --Dividend <= "100101010111010000010010001110000110" 
-Dividend <= "100101011000011101100100001100100001"; 
 --Divisor <=  "0101011100110110";
+
+--958764321/8564                    
+Dividend <= "100101011000011101100100001100100001"; 
 Divisor <=  "1000010101100100";
 
 
