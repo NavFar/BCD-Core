@@ -42,10 +42,12 @@ end BCDSubtractorGeneric;
 
 architecture Behavioral of BCDSubtractorGeneric is
 
-component  BCDComplement is
-    Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
-           C : out STD_LOGIC_VECTOR (3 downto 0));
+component BCDComplementGeneric is
+    generic (N  : in integer);
+    Port    (A  : in STD_LOGIC_VECTOR(4*n-1 downto 0);
+             AComp : out STD_LOGIC_VECTOR(4*n-1 downto 0));
 end component;
+
 
 component BCDAdderGeneric is
     generic(N : in integer);
@@ -57,13 +59,9 @@ component BCDAdderGeneric is
 end component;
 signal BComp:STD_LOGIC_VECTOR(4*N-1 downto 0);
 
-Signal bouts : STD_LOGIC_VECTOR(N-1 downto 0);
 
 begin
 
-complement:for i in 0 to n-1 generate
-        compI:BCDComplement port map(B(4*i+3 downto 4*i),Bcomp(4*i+3 downto 4*i));
-end generate complement;
-
-adder: BCDAdderGeneric generic map(N) port map(A,Bcomp,Bin,R,Bout);
+complemet:BCDComplementGeneric generic map(N) port map(B,BComp);
+adder: BCDAdderGeneric generic map(N) port map(A,Bcomp,'0',R,Bout);
 end Behavioral;
