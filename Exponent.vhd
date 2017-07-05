@@ -60,7 +60,7 @@ component BCDMultiplierGeneric is
 end component;
 signal Binary : STD_LOGIC_VECTOR (7 downto 0);
 
-type state_t is(state0,state1,state2,state3,state4,state5,state6);
+type state_t is(state0,state1,state2,state3,state4);
 signal curState : state_t:=state0;
 signal RSTFlag: STD_LOGIC:='0';
 signal RSTFlagBuffer: STD_LOGIC:='1';
