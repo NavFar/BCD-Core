@@ -65,7 +65,7 @@ component BCDSubtractorGeneric is
             Bout : out STD_LOGIC);
 end component;
 
-type state_t is(state0,state1,state2,state3,state4);
+type state_t is(state0,state1,state2,state3,state4,state5);
 signal curState : state_t:=state0;
 
 signal Dividend_buffer :  STD_LOGIC_VECTOR(4*n-1 downto 0);
@@ -122,7 +122,7 @@ begin
                             Divisor_buffer_PA<=(others=>'0');
                             curState<=state3;
                         else
-                            curState<=state4;
+                            curState<=state5;
                         end if;
                     end if;
             when state2=>
@@ -134,11 +134,19 @@ begin
                   curState<=state1;
                   Quotient_buffer(4*n-1 downto 4) <= Quotient_buffer(4*n-5 downto 0);
                   Quotient_buffer(3 downto 0) <= "0000";
+            when state5=>
+                  if(index/=(n-m)) then
+                  Quotient_buffer(4*n-1 downto 4) <= Quotient_buffer(4*n-5 downto 0);
+                  Quotient_buffer(3 downto 0) <= "0000";
+                  index<=index+1;
+                  else 
+                  curState<=state4;
+
+                  end if;
             when state4=>
                   if(newFlag/=newFlagBuffer) then
                   remainder<=Dividend_buffer(4*m-1 downto 0);
-                  Quotient(4*(n-m-index)-1 downto 0)<=(others=>'0');
-                  Quotient(4*n-1 downto 4*(n-m-index))<=Quotient_buffer(4*(m+index)-1 downto 0);
+                  Quotient<=Quotient_buffer;
                   flag<=not Flag;
                   newFlagBuffer<=newFlag;
                   end if;
