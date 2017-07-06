@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 07/04/2017 12:58:56 AM
+-- Create Date: 07/06/2017 01:33:19 AM
 -- Design Name: 
--- Module Name: Exponent - Behavioral
+-- Module Name: BCDExponentGeneric - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Exponent is
+entity BCDExponentGeneric is
     generic (N : integer);
     Port ( CLK : in STD_LOGIC;
            enable : in STD_LOGIC;
@@ -39,9 +39,9 @@ entity Exponent is
            P : in STD_LOGIC_VECTOR (7 downto 0);
            Flag:buffer STD_LOGIC:='0';
            R : out STD_LOGIC_VECTOR (4*n-1 downto 0));
-end Exponent;
+end BCDExponentGeneric;
 
-architecture Behavioral of Exponent is
+architecture Behavioral of BCDExponentGeneric is
 
 
 
@@ -142,3 +142,4 @@ begin
 end process;
 
 end Behavioral;
+
