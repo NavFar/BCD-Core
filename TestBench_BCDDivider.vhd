@@ -44,8 +44,10 @@ divider_ins: BCDDivderGeneric generic map(N,M) port map(CLK,enable,Dividend,Divi
 --Divisor <=  "0101011100110110";
 
 --958764321/8564                    
-Dividend <= "100101011000011101100100001100100001"; 
-Divisor <=  "1000010101100100";
+Dividend <= "100101011000011101100100001100100001";
+Divisor <=    "1000010101100100";
+
+
 
 
 CLK<= not CLK after  10ns; 
