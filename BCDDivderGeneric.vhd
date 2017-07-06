@@ -90,12 +90,12 @@ signal RSTFlag: STD_LOGIC:='0';
 signal RSTFlagBuffer: STD_LOGIC:='1';
 signal NewFlag: STD_LOGIC:='0';
 signal NewFlagBuffer: STD_LOGIC:='0';
-       
 begin
 Divisor_buffer_CA<=zero&Divisor;
 AllComparator:     BCDSubtractorGeneric generic map(n) port map(Dividend_buffer,Divisor_buffer_CA,'0',open,CA_Flag);
 PartialComparator: BCDSubtractorGeneric generic map(n) port map(Dividend_buffer,Divisor_buffer_PA,'0',CP_output,CP_Flag);
 QuotientAdde:      BCDAdderGeneric      generic map(n) port map(Quotient_buffer,one,'0',adderOutput,open);
+
 
 process(CLK)
 begin
@@ -137,7 +137,8 @@ begin
             when state4=>
                   if(newFlag/=newFlagBuffer) then
                   remainder<=Dividend_buffer(4*m-1 downto 0);
-                  Quotient<=Quotient_buffer;
+                  Quotient(4*(n-m-index)-1 downto 0)<=(others=>'0');
+                  Quotient(4*n-1 downto 4*(n-m-index))<=Quotient_buffer(4*(m+index)-1 downto 0);
                   flag<=not Flag;
                   newFlagBuffer<=newFlag;
                   end if;
