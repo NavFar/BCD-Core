@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 07/04/2017 01:01:15 PM
+-- Create Date: 07/06/2017 05:47:00 AM
 -- Design Name: 
--- Module Name: TestBench_SubtractorGeneric - Behavioral
+-- Module Name: TestBench_BCDSubtractorGeneric - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,12 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity TestBench_SubtractorGeneric is
+entity TestBench_BCDSubtractorGeneric is
 --  Port ( );
-end TestBench_SubtractorGeneric;
+end TestBench_BCDSubtractorGeneric;
 
-architecture Behavioral of TestBench_SubtractorGeneric is
-
+architecture Behavioral of TestBench_BCDSubtractorGeneric is
 component BCDSubtractorGeneric is
     generic(N : in integer);
     Port   (A : in STD_LOGIC_VECTOR(4*N-1 downto 0);
