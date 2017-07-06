@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 07/04/2017 10:35:10 AM
+-- Create Date: 07/06/2017 05:47:57 AM
 -- Design Name: 
--- Module Name: TestBench_Exponent - Behavioral
+-- Module Name: TestBench_BCDExponentGeneric - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,12 +31,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity TestBench_Exponent is
+entity TestBench_BCDExponentGeneric is
 --  Port ( );
-end TestBench_Exponent;
+end TestBench_BCDExponentGeneric;
 
-architecture Behavioral of TestBench_Exponent is
-component Exponent is
+architecture Behavioral of TestBench_BCDExponentGeneric is
+
+component BCDExponentGeneric is
     generic (N : integer);
     Port ( CLK : in STD_LOGIC;
            enable : in STD_LOGIC;
@@ -55,7 +56,7 @@ signal Flag: STD_LOGIC:='0';
 signal R :  STD_LOGIC_VECTOR (4*n-1 downto 0);
 begin
 
-exponent_ins : Exponent generic map(N) port map(CLK,enable,A,P,Flag,R);
+exponent_ins : BCDExponentGeneric generic map(N) port map(CLK,enable,A,P,Flag,R);
 --9^6
 --8^6
 --0^9
