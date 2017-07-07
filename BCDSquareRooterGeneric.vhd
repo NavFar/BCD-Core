@@ -145,7 +145,7 @@ signal NewFlagBuffer: STD_LOGIC:='0';
 begin
 Adder: BCDAdderGeneric generic map(n+Z) port map(AdderA,AdderB,'0',AdderR,open);
 subtractor: BCDSubtractorGeneric generic map(2) port map(p,one,'0',Pminus,open);         
-comparartor: VectorComparatorGeneric generic map(4*(n+z)) port map(AdderR,X,Equal);
+comparartor: VectorComparatorGeneric generic map(4*n) port map(AdderR(4*(n+z)-1 downto 4*z),X(4*(n+z)-1 downto 4*z),Equal);
 exponent: BCDExponentGeneric generic map(n) port map(CLK,exponentEnable,exponentA,pminus,exponentFlag,exponentR);               
 divider1: BCDDivderGeneric   generic map(n+z,2) port map(CLK,divider1Enable,divider1Dividend,p,divider1Flag,open,divider1Quotient);
 divider2: BCDDivderGeneric   generic map(n+z,n) port map(CLK,divider2Enable,divider2Dividend,divider2Divisor,divider2Flag,open,divider2Quotient);
