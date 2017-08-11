@@ -2,7 +2,7 @@
 **This project is my Design automation course final project**
 ## Environment
 Project is completely (Both simulated and implemented ):
- > Xilinx Vivado HLS.
+**Xilinx Vivado HLS.**
 ## Project Structure
 Almost every module moduleName has a testBench TestBench_moduleName 
 ## Project Modules
