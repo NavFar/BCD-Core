@@ -7,6 +7,7 @@ Project is completely (Both simulated and implemented ):
 Almost every module moduleName has a testBench TestBench_moduleName 
 ## Project Modules
 |FileName      |TestBench|Description|
+| ------------------- |:-------------------:| --------------------------------------:|
 |HalfAdder.vhd |No TestBench|Implemented Structural|
 |FullAdder.vhd |No TestBench|Implemented Structural|
 |BinaryMultiplier2Bits.vhd|No TestBench|2 bit binary multiplier based on Full and Half Adder|
