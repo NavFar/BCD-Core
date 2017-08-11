@@ -2,7 +2,7 @@
 **This project is my Design automation course final project**
 ## Environment
 Project is completely (Both simulated and implemented ):
-	> Xilinx Vivado HLS.
+ > Xilinx Vivado HLS.
 ## Project Structure
 Almost every module moduleName has a testBench TestBench_moduleName 
 ## Project Modules
@@ -26,7 +26,7 @@ Almost every module moduleName has a testBench TestBench_moduleName
 |BCDSquareRooterGeneric.vhd|TestBench_BCDSquareRooterGeneric.vhd|Calculate root of n BCD (root is 2 BCD) can output m BCD as fractional part|
 |BCDNormPGeneric.vhd|TestBench_BCDNormPGeneric.vhd|Calculate P norm (p is 2 BCD) of a 5 dimensionals Vector that every dimensional is  n BCD|
 ## Square Root Formula
-![Image of Formula](https://gitlab.com/DesignAutomation/FinalProject/blob/master/Screenshot_2017-08-11_21-20-29.png)
+![Image of Formula](https://gitlab.com/DesignAutomation/FinalProject/raw/master/Screenshot_2017-08-11_21-20-29.png)
 ## Warning
 Norm P can't calculate result fractional part Accurate
 ## Autor
